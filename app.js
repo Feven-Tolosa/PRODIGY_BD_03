@@ -49,7 +49,9 @@ app.get('/profile', authenticateToken, (req, res) => {
 
 function authorizeRole(role) {
   return (req, res, next) => {
-    if (req.user.role !== role) return res.sendStatus(403)
+    console.log('User Role:', req.user.role) // Debugging
+    console.log('Required Role:', role) // Debugging
+    if (req.user.role !== role) return res.sendStatus(403) // Forbidden
     next()
   }
 }
